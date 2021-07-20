@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <% const name = 'Blog'%> <%- include('../partials/nav.ejs') %>
+    <main>
+      <article>
+        <h2>All Shares</h2>
+      </article>
+      <div class="blogs content">
+        <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+        <a class="post" href="/blogs/<%=blog._id%>">
+          <h1 class="title"><%= blog.title %></h1>
+          <%if(blog.image){%>
+          <img src="data:image/png;base64,<%=blog.image%>" alt="" />
+          <%}%>
+          <p class="snippet"><%= blog.snippet %></p>
+        </a>
+        <% }) %> <% } else { %>
+        <p>There are no subjects.</p>
+        <% } %>
+      </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
